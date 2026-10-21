@@ -3,3 +3,9 @@ dist
 .env
 *.log
 .DS_Store
+
+# Local SQLite database
+server/data
+
+# Wrangler local state
+.wrangler

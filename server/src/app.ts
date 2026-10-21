@@ -1,14 +1,26 @@
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express, { type ErrorRequestHandler } from 'express'
+import type { Db } from './db/types.js'
+import { authRouter } from './routes/auth.js'
 import { healthRouter } from './routes/health.js'
 
-export function createApp() {
+type AppOptions = {
+  db: Db
+  secureCookies: boolean
+  /** Origin allowed to call the API cross-origin. Omit when the client is served from the same origin. */
+  corsOrigin?: string
+}
+
+export function createApp({ db, secureCookies, corsOrigin }: AppOptions) {
   const app = express()
 
-  app.use(cors({ origin: process.env.CLIENT_ORIGIN ?? 'http://localhost:5173' }))
+  if (corsOrigin) app.use(cors({ origin: corsOrigin, credentials: true }))
   app.use(express.json())
+  app.use(cookieParser())
 
   app.use('/api/health', healthRouter)
+  app.use('/api/auth', authRouter({ db, secureCookies }))
 
   app.use((_req, res) => {
     res.status(404).json({ error: 'Not found' })

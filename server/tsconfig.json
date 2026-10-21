@@ -13,5 +13,7 @@
     "types": ["node"],
     "sourceMap": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  // Cloudflare-only files are checked by tsconfig.worker.json instead.
+  "exclude": ["src/worker.ts", "src/db/d1.ts"]
 }

@@ -1,0 +1,11 @@
+{
+  // Type-checks the Cloudflare Worker build (bundled by wrangler, never emitted by tsc).
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2024"],
+    "types": ["node"]
+  },
+  "include": ["src", "worker-configuration.d.ts"],
+  "exclude": ["src/index.ts", "src/scripts", "src/db/sqlite.ts"]
+}

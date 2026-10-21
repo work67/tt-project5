@@ -6,12 +6,84 @@
 }
 
 .card {
-  margin-top: 2rem;
+  max-width: 360px;
+  margin: 2rem auto 0;
   padding: 1.5rem;
   border: 1px solid #8884;
   border-radius: 8px;
 }
 
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 500;
+}
+
+.auth-form input {
+  padding: 0.5rem;
+  font: inherit;
+  border: 1px solid #8886;
+  border-radius: 6px;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tabs button {
+  flex: 1;
+}
+
+.tabs button[aria-selected='true'] {
+  border-color: currentColor;
+  font-weight: 600;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font: inherit;
+  border: 1px solid #8886;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+button.primary {
+  background: #646cff;
+  border-color: #646cff;
+  color: #fff;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.hint,
+.error {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.hint {
+  opacity: 0.75;
+}
+
 .error {
   color: #d33;
+}
+
+p.error {
+  padding-left: 0;
 }
